@@ -1,0 +1,414 @@
+/* ==========================================================================
+   RÖNESANS ESTETİĞİ & MODERN MİNİMALİZM TASARIM SİSTEMİ
+   Regio Praefectus Design Tokens & Micro-Animations
+   ========================================================================== */
+
+:root {
+  /* Tipografi */
+  --font-royal: 'Cinzel', serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Rönesans Koyu Tema (Obsidian & Altın Varak - Varsayılan) */
+  --bg-main: #0c0e14;
+  --bg-surface: #141722;
+  --bg-surface-elevated: #1a1f2e;
+  --bg-surface-glass: rgba(20, 23, 34, 0.85);
+  --bg-subtle: rgba(212, 175, 55, 0.05);
+
+  --text-primary: #f5f2ea;
+  --text-secondary: #c2baa8;
+  --text-muted: #857e70;
+
+  --gold-primary: #d4af37;
+  --gold-light: #f7e7a9;
+  --gold-dark: #8c7023;
+  --gold-gradient: linear-gradient(135deg, #f7e7a9 0%, #d4af37 50%, #9a7620 100%);
+  --gold-glow: 0 0 20px rgba(212, 175, 55, 0.25);
+
+  --border-gold: rgba(212, 175, 55, 0.22);
+  --border-gold-hover: rgba(212, 175, 55, 0.45);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+
+  --accent-crimson: #c73838;
+  --accent-emerald: #299e74;
+  --accent-lapis: #3178c6;
+  --accent-amber: #d4881e;
+
+  --shadow-renaissance: 0 10px 30px -10px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(212, 175, 55, 0.15);
+  --shadow-elevated: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 2px 1px rgba(212, 175, 55, 0.3);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --transition-smooth: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Rönesans Parşömen & Mermer Açık Tema */
+[data-theme="renaissance-light"] {
+  --bg-main: #f8f5ee;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #f2eee3;
+  --bg-surface-glass: rgba(255, 255, 255, 0.9);
+  --bg-subtle: rgba(180, 140, 50, 0.08);
+
+  --text-primary: #1c1813;
+  --text-secondary: #5e5445;
+  --text-muted: #8c8273;
+
+  --gold-primary: #a37c1d;
+  --gold-light: #d4af37;
+  --gold-dark: #634b0f;
+  --gold-gradient: linear-gradient(135deg, #c59f3d 0%, #a37c1d 50%, #634b0f 100%);
+  --gold-glow: 0 0 15px rgba(163, 124, 29, 0.2);
+
+  --border-gold: rgba(163, 124, 29, 0.25);
+  --border-gold-hover: rgba(163, 124, 29, 0.5);
+  --border-subtle: rgba(0, 0, 0, 0.08);
+
+  --shadow-renaissance: 0 10px 30px -10px rgba(60, 45, 20, 0.1), 0 0 1px 1px rgba(163, 124, 29, 0.2);
+  --shadow-elevated: 0 20px 40px -15px rgba(60, 45, 20, 0.18), 0 0 2px 1px rgba(163, 124, 29, 0.35);
+}
+
+/* Temel Sıfırlama */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.06) 0%, transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(41, 158, 116, 0.04) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* Tipografi Sınıfları */
+.font-royal {
+  font-family: var(--font-royal);
+  letter-spacing: 0.05em;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.gold-text {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Asil Rönesans Kartı */
+.renaissance-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-renaissance);
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.renaissance-card:hover {
+  border-color: var(--border-gold-hover);
+  box-shadow: var(--shadow-elevated);
+}
+
+/* İnce Altın Köşe Vurgusu */
+.renaissance-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+  opacity: 0.6;
+}
+
+/* Asil Düğmeler */
+.btn-royal {
+  font-family: var(--font-royal);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  padding: 8px 18px;
+  background: var(--gold-gradient);
+  color: #12100c;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.btn-royal:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45);
+}
+
+.btn-outline-royal {
+  font-family: var(--font-royal);
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  padding: 7px 16px;
+  background: rgba(212, 175, 55, 0.08);
+  color: var(--gold-light);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition-smooth);
+}
+
+.btn-outline-royal:hover {
+  background: rgba(212, 175, 55, 0.16);
+  border-color: var(--gold-primary);
+  color: #ffffff;
+}
+
+.btn-ghost {
+  padding: 6px 12px;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  transition: var(--transition-smooth);
+}
+
+.btn-ghost:hover {
+  background: var(--bg-surface-elevated);
+  color: var(--text-primary);
+  border-color: var(--border-gold);
+}
+
+/* Rozetler / Badges */
+.badge-gold {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--gold-primary);
+  border: 1px solid var(--border-gold);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.icathane-badge {
+  background: rgba(212, 175, 55, 0.14);
+  color: var(--gold-light);
+  border: 1px solid var(--border-gold);
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  transition: all var(--transition-fast);
+}
+
+.icathane-badge:hover {
+  background: rgba(212, 175, 55, 0.22);
+  border-color: var(--gold-primary);
+}
+
+.badge-emerald {
+  background: rgba(41, 158, 116, 0.15);
+  color: var(--accent-emerald);
+  border: 1px solid rgba(41, 158, 116, 0.3);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.badge-crimson {
+  background: rgba(199, 56, 56, 0.15);
+  color: var(--accent-crimson);
+  border: 1px solid rgba(199, 56, 56, 0.3);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.badge-amber {
+  background: rgba(212, 136, 30, 0.15);
+  color: var(--accent-amber);
+  border: 1px solid rgba(212, 136, 30, 0.3);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+/* Altın Ayraç / Divider */
+.renaissance-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 18px 0;
+  color: var(--gold-primary);
+  opacity: 0.6;
+}
+
+.renaissance-divider::before,
+.renaissance-divider::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, var(--border-gold), transparent);
+}
+
+/* Modal Stilleri */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 7, 10, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-elevated);
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-gold);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.modal-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-footer {
+  padding: 18px 24px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  background: var(--bg-subtle);
+}
+
+/* Form Elemanları */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+.form-input, .form-select, .form-textarea {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-gold);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  transition: var(--transition-smooth);
+  outline: none;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* Animasyonlar */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Kaydırma Çubuğu */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.25);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.45);
+}
